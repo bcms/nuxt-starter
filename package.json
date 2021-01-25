@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@becomes/cms-client": "^2.0.4",
     "@nuxt/typescript-runtime": "^2.0.1",
     "@nuxtjs/axios": "^5.12.5",
     "core-js": "^3.8.2",
