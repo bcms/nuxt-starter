@@ -29,9 +29,9 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  async asyncData({ $bcms }) {
-    const result = await $bcms.get().entry.getAll("5fcf6750766bb59df86a69ec");
-    console.log(result);
+  async asyncData(context) {
+    console.log(context.$bcms);
+    console.log(typeof context.$bcms);
   },
 });
 </script>
