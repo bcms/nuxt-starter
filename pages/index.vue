@@ -30,8 +30,15 @@ import Vue from "vue";
 
 export default Vue.extend({
   async asyncData(context) {
-    console.log(context.$bcms);
-    console.log(typeof context.$bcms);
+    console.log("From asyncData: ", context.$bcms);
+  },
+  fetch(context) {
+    console.log("From fetch: ", context.$bcms);
+  },
+  mounted() {
+    console.log("From mounted: ", this.$bcms);
+
+    console.log("From vuex store: ", this.$store.$bcms);
   },
 });
 </script>
