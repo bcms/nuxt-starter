@@ -30,15 +30,24 @@ import Vue from "vue";
 
 export default Vue.extend({
   async asyncData(context) {
-    console.log("From asyncData: ", context.$bcms);
+    // console.log(
+    //   "From asyncData: ",
+    //   context.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
+    // );
   },
   fetch(context) {
-    console.log("From fetch: ", context.$bcms);
+    // console.log(
+    //   "From fetch: ",
+    //   context.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
+    // );
   },
   mounted() {
-    console.log("From mounted: ", this.$bcms);
+    console.log("From mounted: ", this.$bcms.find("blog"));
 
-    console.log("From vuex store: ", this.$store.$bcms);
+    // console.log(
+    //   "From vuex store: ",
+    //   this.$store.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
+    // );
   },
 });
 </script>
