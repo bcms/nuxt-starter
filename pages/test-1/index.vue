@@ -37,7 +37,7 @@ export default Vue.extend({
         context.base,
         'blog',
         async (item) => {
-          return { _id: item._id }
+          return { createdAt: item.createdAt }
         }
       )
     }
