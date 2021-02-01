@@ -20,34 +20,48 @@
         >
           GitHub
         </a>
+        <pre>
+          {{ this.content }}
+        </pre>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { BCMSMostCacheContentItem } from "@becomes/cms-most/types";
 import Vue from "vue";
 
+interface State {
+  content: BCMSMostCacheContentItem;
+}
 export default Vue.extend({
   async asyncData(context) {
-    // console.log(
-    //   "From asyncData: ",
-    //   context.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
-    // );
+    console.log(
+      "From asyncData: ",
+      context.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
+    );
   },
   fetch(context) {
-    // console.log(
-    //   "From fetch: ",
-    //   context.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
-    // );
+    console.log(
+      "From fetch: ",
+      context.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
+    );
+  },
+  data() {
+    return {
+      content: {},
+    } as State;
   },
   mounted() {
     console.log("From mounted: ", this.$bcms.find("blog"));
 
-    // console.log(
-    //   "From vuex store: ",
-    //   this.$store.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
-    // );
+    console.log(
+      "From vuex store: ",
+      this.$store.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
+    );
+
+    this.content = this.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15");
   },
 });
 </script>
