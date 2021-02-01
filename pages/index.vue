@@ -22,18 +22,19 @@
         </a>
         <pre>
           {{ this.content }}
-        </pre>
+          </pre
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { BCMSMostCacheContentItem } from "@becomes/cms-most/types";
+// import { BCMSMostCacheContentItem } from "@becomes/cms-most/types";
 import Vue from "vue";
 
 interface State {
-  content: BCMSMostCacheContentItem;
+  content: string;
 }
 export default Vue.extend({
   async asyncData(context) {
@@ -61,7 +62,10 @@ export default Vue.extend({
       this.$store.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15")
     );
 
-    this.content = this.$bcms.findOne("company", "5fcf6b7c201764a3b88fbd15");
+    this.content = this.$bcms.findOne(
+      "company",
+      "5fcf6b7c201764a3b88fbd15"
+    )._id;
   },
 });
 </script>
