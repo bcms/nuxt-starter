@@ -2,7 +2,9 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">cms-nuxt-starter-blog</h1>
+      <h1 class="title">
+        cms-nuxt-starter-blog
+      </h1>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -27,48 +29,25 @@
 </template>
 
 <script lang="ts">
-// import { BCMSMostCacheContentItem } from "@becomes/cms-most/types";
-import Vue from 'vue'
+import Vue from 'vue';
 
 export default Vue.extend({
-  async asyncData(context) {
+  /**
+   * TODO: Types are not exported correctly. Typescript throws
+   * an error if context is not "any" because "context.$bcms"
+   * is undefined for Typescript.
+   */
+  async asyncData(context: any) {
     return {
-      data: await context.$bcms.findOne<any>(
-        context.base,
+      data: await context.$bcms.findOne(
         'blog',
-        async (item) => {
-          return { _id: item._id }
-        }
-      )
-    }
-    // console.log(context.$bcms)
-    // console.log(
-    //   'From asyncData: ',
-    //   context.$bcms.findOne('company', '5fcf6b7c201764a3b88fbd15')
-    // )
-  }
-  // fetch(context) {
-  //   console.log(
-  //     'From fetch: ',
-  //     context.$bcms.findOne('company', '5fcf6b7c201764a3b88fbd15')
-  //   )
-  // },
-  // data() {
-  //   return {
-  //     content: {}
-  //   } as State
-  // },
-  // mounted() {
-  //   console.log('From mounted: ', this.$bcms.find('blog'))
-
-  //   console.log(
-  //     'From vuex store: ',
-  //     this.$store.$bcms.findOne('company', '5fcf6b7c201764a3b88fbd15')
-  //   )
-
-  //   this.content = this.$bcms.findOne('company', '5fcf6b7c201764a3b88fbd15')._id
-  // }
-})
+        (item: any) => {
+          return { _id: item._id, title: item.meta.en.title } as any;
+        },
+      ),
+    };
+  },
+});
 </script>
 
 <style>
@@ -83,7 +62,7 @@ export default Vue.extend({
 
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
