@@ -21,6 +21,35 @@
           GitHub
         </a>
         <pre>{{ data }}</pre>
+        <BCMSNuxtImage
+          style="max-width: 1400px; width: 100%"
+          :src="data.cover_image"
+          :alt="data.title"
+          :options="{
+            sizes: [
+              {
+                width: 350,
+                height: 250
+              },
+              {
+                width: 600,
+                height: 350
+              },
+              {
+                width: 900,
+                height: 470
+              },
+              {
+                width: 1200,
+                height: 700
+              },
+              {
+                width: 1400,
+                height: 700
+              }
+            ]
+          }"
+        />
       </div>
     </div>
   </div>
@@ -28,17 +57,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import BCMSNuxtImage from '@/components/bcms/Image.vue'
 
 export default Vue.extend({
-  /**
-   * TODO: Types are not exported correctly. Typescript throws
-   * an error if context is not "any" because "context.$bcms"
-   * is undefined for Typescript.
-   */
+  components: {
+    BCMSNuxtImage
+  },
   async asyncData(context) {
     return {
       data: await context.$bcms.findOne('blog', (item: any) => {
-        return { _id: item._id, title: item.meta.en.title } as any
+        return {
+          _id: item._id,
+          title: item.meta.en.title,
+          cover_image: item.meta.en.cover_image
+        } as any
       })
     }
   }
