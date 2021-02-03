@@ -2,9 +2,7 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">
-        cms-nuxt-starter-blog
-      </h1>
+      <h1 class="title">cms-nuxt-starter-blog</h1>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -29,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from 'vue'
 
 export default Vue.extend({
   /**
@@ -37,17 +35,14 @@ export default Vue.extend({
    * an error if context is not "any" because "context.$bcms"
    * is undefined for Typescript.
    */
-  async asyncData(context: any) {
+  async asyncData(context) {
     return {
-      data: await context.$bcms.findOne(
-        'blog',
-        (item: any) => {
-          return { _id: item._id, title: item.meta.en.title } as any;
-        },
-      ),
-    };
-  },
-});
+      data: await context.$bcms.findOne('blog', (item: any) => {
+        return { _id: item._id, title: item.meta.en.title } as any
+      })
+    }
+  }
+})
 </script>
 
 <style>
@@ -62,7 +57,7 @@ export default Vue.extend({
 
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-  'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
