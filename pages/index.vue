@@ -22,7 +22,10 @@
         </a>
         <pre>{{ data }}</pre>
         <BCMSNuxtImage
-          style="max-width: 1400px; width: 100%"
+          :additionalStyle="{
+            maxWidth: '1400px',
+            width: '100%'
+          }"
           :src="data.cover_image"
           :alt="data.title"
           :options="{
