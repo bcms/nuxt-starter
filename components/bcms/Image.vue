@@ -110,6 +110,8 @@ export default Vue.extend({
     }
   },
   mounted() {
+    BCMSImageService.setServerPort(3001)
+
     const ref = this.$refs.imageElement as HTMLImageElement
 
     if (this.parsable) {
