@@ -2,15 +2,19 @@
   <div class="bcms-img" :class="{ className: className }">
     <picture v-if="parsable">
       <source
-        :srcSet="`/media/${opsParsed}${deconstructedSrc.firstPart}-${sizeIndex}.webp`"
+        :srcSet="
+          `/media/${opsParsed}${deconstructedSrc.firstPart}-${sizeIndex}.webp`
+        "
       />
       <source
-        :srcSet="`/media/${opsParsed}${deconstructedSrc.firstPart}-${sizeIndex}.${deconstructedSrc.lastPart}`"
+        :srcSet="
+          `/media/${opsParsed}${deconstructedSrc.firstPart}-${sizeIndex}.${deconstructedSrc.lastPart}`
+        "
       />
       <img
+        ref="imageElement"
         :class="className"
         :style="imgStyle"
-        ref="imageElement"
         :onClick="onClick"
         draggable="false"
         :src="src"
@@ -20,9 +24,9 @@
     </picture>
     <img
       v-else
+      ref="imageElement"
       :class="className"
       :style="imgStyle"
-      ref="imageElement"
       :onClick="onClick"
       draggable="false"
       :src="src"
@@ -38,6 +42,8 @@ import {
   BCMSImageService,
   BCMSImageDeconstructedSrc
 } from '@becomes/cms-most/front'
+
+BCMSImageService.setServerPort(3001)
 
 interface ImageOptions {
   step?: number
@@ -110,8 +116,7 @@ export default Vue.extend({
     }
   },
   mounted() {
-    BCMSImageService.setServerPort(3001)
-
+    console.log('2')
     const ref = this.$refs.imageElement as HTMLImageElement
 
     if (this.parsable) {
@@ -123,14 +128,14 @@ export default Vue.extend({
           autoMaxWidth: this.autoMaxWidth,
           options: this.options
         })
-          .then((newSizeIndex) => {
+          .then(newSizeIndex => {
             if (ref) {
               if (newSizeIndex !== this.sizeIndex) {
                 this.sizeIndex = newSizeIndex
               }
             }
           })
-          .catch((e) => {
+          .catch(e => {
             console.error(e)
           })
       } else {
@@ -162,5 +167,4 @@ export default Vue.extend({
 })
 </script>
 
-<style>
-</style>
+<style></style>
