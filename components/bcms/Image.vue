@@ -1,5 +1,5 @@
 <template>
-  <div class="bcms-img" :class="{ className: className }">
+  <div class="bcms-img">
     <picture v-if="parsable">
       <source
         :srcSet="
@@ -13,9 +13,6 @@
       />
       <img
         ref="imageElement"
-        :class="className"
-        :style="imgStyle"
-        :onClick="onClick"
         draggable="false"
         :src="src"
         :alt="alt"
@@ -25,9 +22,6 @@
     <img
       v-else
       ref="imageElement"
-      :class="className"
-      :style="imgStyle"
-      :onClick="onClick"
       draggable="false"
       :src="src"
       :alt="alt"
@@ -42,7 +36,6 @@ import {
   BCMSImageService,
   BCMSImageDeconstructedSrc
 } from '@becomes/cms-most/front'
-
 BCMSImageService.setServerPort(3001)
 
 interface ImageOptions {
@@ -58,11 +51,6 @@ interface ImageOptions {
 export default Vue.extend({
   name: 'BCMSNuxtImage',
   props: {
-    additionalStyle: {
-      type: Object,
-      default: {},
-      required: true
-    },
     src: {
       type: String,
       default: '',
@@ -72,16 +60,6 @@ export default Vue.extend({
       type: String,
       default: '',
       required: true
-    },
-    className: {
-      type: String,
-      default: '',
-      required: false
-    },
-    onClick: {
-      type: Function,
-      default: () => {},
-      required: false
     },
     autoMaxWidth: {
       type: Boolean,
@@ -96,12 +74,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      sizeIndex: process.env.NODE_ENV === 'development' ? -1 : 0,
-      imgStyle: {
-        ...this.additionalStyle
-        // opacity: opacity,
-        // transition: 'opacity 0.3s ease',
-      }
+      sizeIndex: process.env.NODE_ENV === 'development' ? -1 : 0
     }
   },
   computed: {
@@ -116,7 +89,6 @@ export default Vue.extend({
     }
   },
   mounted() {
-    console.log('2')
     const ref = this.$refs.imageElement as HTMLImageElement
 
     if (this.parsable) {

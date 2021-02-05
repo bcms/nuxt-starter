@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <nuxt-link to="/page2">Page 2</nuxt-link>
+    <NuxtLink to="/">Home</NuxtLink>
     <div>
       <Logo />
       <h1 class="title">cms-nuxt-starter-blog</h1>
@@ -23,12 +23,10 @@
         </a>
         <pre>{{ data }}</pre>
         <BCMSNuxtImage
-          class="test"
-          :style="{
+          :additionalStyle="{
             maxWidth: '1400px',
             width: '100%'
           }"
-
           :src="data.cover_image"
           :alt="data.title"
           :options="{
@@ -78,11 +76,6 @@ export default Vue.extend({
           cover_image: item.meta.en.cover_image
         } as any
       })
-    }
-  },
-  methods: {
-    imageClick: () => {
-      alert('HERE');
     }
   }
 })
