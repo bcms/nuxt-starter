@@ -21,6 +21,7 @@
         >
           GitHub
         </a>
+        <button @click="$nuxt.refresh()">Data refresh</button>
         <pre>{{ data }}</pre>
         <BCMSNuxtImage
           class="test"
@@ -28,7 +29,6 @@
             maxWidth: '1400px',
             width: '100%'
           }"
-
           :src="data.cover_image"
           :alt="data.title"
           :options="{
@@ -82,7 +82,7 @@ export default Vue.extend({
   },
   methods: {
     imageClick: () => {
-      alert('HERE');
+      alert('HERE')
     }
   }
 })
