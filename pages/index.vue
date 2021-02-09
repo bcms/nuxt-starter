@@ -21,7 +21,6 @@
         >
           GitHub
         </a>
-        <button @click="$nuxt.refresh()">Data refresh</button>
         <pre>{{ data }}</pre>
         <BCMSNuxtImage
           class="test"
