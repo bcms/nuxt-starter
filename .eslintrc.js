@@ -4,12 +4,15 @@ module.exports = {
     browser: true,
     node: true
   },
-  extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended'
-  ],
-  plugins: [
-  ],
+  extends: ['@nuxtjs/eslint-config-typescript', 'plugin:nuxt/recommended'],
+  plugins: [],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'no-debugger': 'warn',
+    'no-shadow': 'error',
+    'no-unused-labels': 'error',
+    'no-unused-expressions': 'error',
+    'no-duplicate-imports': 'error',
+    'require-await': false
+  }
 }

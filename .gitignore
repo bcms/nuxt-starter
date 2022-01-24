@@ -91,4 +91,4 @@ sw.*
 
 # BCMS
 /bcms
-/static/media
+/static/bcms-media
