@@ -1,4 +1,5 @@
 import { createBcmsNuxtConfig } from 'nuxt-plugin-bcms/module'
+import bcmsRoutes from './bcms.routes'
 
 export default {
   target: 'static',
@@ -53,7 +54,12 @@ export default {
               '931e85ff9a646a72e197d3927c2461a100fe4fc1a7d13ac6614d3730fff85b53'
           }
         },
-        websiteDomain: process.env.ORIGIN || 'http://localhost:3000'
+        websiteDomain: process.env.ORIGIN || 'http://localhost:3000',
+        server: {
+          routes: bcmsRoutes
+          // domain: 'localhost',
+          // port: 3000
+        }
       })
     ]
   ],

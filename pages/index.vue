@@ -5,7 +5,7 @@
     <br />
     <br />
     <template v-for="blog in blogs">
-      <nuxt-link :key="blog.slug" :to="`/blog/${blog.meta.en.slug}`">{{blog.meta.en.title}}</nuxt-link>
+      <nuxt-link :key="blog.slug" :to="`/blog/${blog.slug}`">{{blog.title}}</nuxt-link>
       <br />
     </template>
   </div>
@@ -17,7 +17,10 @@ import type {BlogEntry} from '~/bcms/types-ts/entry/blog'
 export default Vue.extend({
   data () {
     const data: {
-      blogs: BlogEntry[]
+      blogs: Array<{
+        slug: string;
+        title: string;
+      }>
     } = {
       blogs: []
     }
@@ -25,15 +28,11 @@ export default Vue.extend({
   },
   
   async asyncData(ctx) {
-    try {
       return {
-        blogs: await ctx.$bcms.entry.getAll({
-          template: 'blog',
+        blogs: await ctx.$bcms.request({
+          url: '/home/data.json'
         })
       };
-    } catch (error) {
-      console.error(error)
-    }
   },
 })
 </script>
