@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@becomes/cms-client": "^3.0.0-alpha2",
-    "@becomes/cms-most": "file:most.tgz",
+    "@becomes/cms-most": "^2.0.0-alpha2",
     "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.4",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
@@ -35,7 +35,7 @@
     "i": "^0.3.7",
     "jest": "^26.6.3",
     "npm": "^8.3.2",
-    "nuxt-plugin-bcms": "file:plugin.tgz",
+    "nuxt-plugin-bcms": "^2.0.0-alpha1",
     "ts-jest": "^26.4.4",
     "uuid": "^8.3.2",
     "vue-jest": "^3.0.4"

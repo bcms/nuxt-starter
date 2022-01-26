@@ -2,7 +2,7 @@ import { createBcmsNuxtConfig } from 'nuxt-plugin-bcms/module'
 import bcmsRoutes from './bcms.routes'
 
 export default {
-  target: 'static',
+  // target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'cms-nuxt-starter-blog',
