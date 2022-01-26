@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -15,7 +15,13 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@types/node", "nuxt-plugin-bcms", "@nuxtjs/axios"]
+    "types": [
+      "@nuxt/types",
+      "@types/node",
+      "nuxt-plugin-bcms",
+      "nuxt-plugin-bcms/components",
+      "@nuxtjs/axios"
+    ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
