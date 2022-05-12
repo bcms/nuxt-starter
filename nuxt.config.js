@@ -17,6 +17,10 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
+  env: {
+    test: 'test'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
@@ -46,12 +50,14 @@ export default {
       'nuxt-plugin-bcms',
       createBcmsNuxtConfig({
         cms: {
-          origin: process.env.BCMS_API_ORIGIN || 'http://localhost:8080',
+          origin:
+            process.env.BCMS_API_ORIGIN ||
+            'https://becomes-starter-projects.yourbcms.com',
           key: {
-            id: process.env.BCMS_API_KEY || '61e6d049b3cbaa77fdb36f77',
+            id: process.env.BCMS_API_KEY || '622b70b377a890368d3602d4',
             secret:
               process.env.BCMS_API_SECRET ||
-              '931e85ff9a646a72e197d3927c2461a100fe4fc1a7d13ac6614d3730fff85b53'
+              '46c7de04efc90eb0196608548b8f0157a2edda12c982ef2469b4ed60a6582d94'
           }
         },
         websiteDomain: process.env.ORIGIN || 'http://localhost:3000',
