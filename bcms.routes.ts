@@ -1,32 +1,42 @@
 import {
   createBcmsMostServerRoutes,
-  createBcmsMostServerRoute
-} from '@becomes/cms-most'
+  createBcmsMostServerRoute,
+} from '@becomes/cms-most';
 
 export default createBcmsMostServerRoutes({
-  '/home/data.json': createBcmsMostServerRoute({
+  '/home.json': createBcmsMostServerRoute({
     method: 'get',
-    async handler({ bcms }) {
-      return await bcms.content.entry.find('blog', async (e) => {
+    async handler ({ bcms }) {
+      await bcms.template.pull();
+      // eslint-disable-next-line require-await
+      const result = await bcms.template.find(async () => true);
+      return result.map((temp) => {
         return {
-          title: e.meta.en.title,
-          slug: e.meta.en.slug
-        }
-      })
-    }
+          title: temp.label,
+          slug: '/' + temp.name,
+        };
+      });
+    },
   }),
-  '/blog/:slug/data.json': createBcmsMostServerRoute({
+  '/template/:slug/data.json': createBcmsMostServerRoute({
     method: 'get',
-    async handler({ bcms, params }) {
-      return await bcms.content.entry.findOne('blog', async (item) => {
-        if (item.meta.en.slug === params.slug) {
-          return item;
-          return {
-            title: item.meta.en.title,
-            preview_description: item.meta.en.preview_description
-          }
-        }
-      })
-    }
-  })
-})
+    async handler ({ bcms, params }) {
+      const res = await bcms.content.entry.find(params.slug, async () => true);
+      return res.map((entry) => {
+        return {
+          title: entry.meta.en.title,
+          slug: `/${params.slug}/${entry.meta.en.slug}`,
+        };
+      });
+    },
+  }),
+  '/template/:template/entry/:entry/data.json': createBcmsMostServerRoute({
+    method: 'get',
+    async handler ({ bcms, params }) {
+      return await bcms.content.entry.findOne(
+        params.template,
+        async e => e.meta.en.slug === params.entry,
+      );
+    },
+  }),
+});

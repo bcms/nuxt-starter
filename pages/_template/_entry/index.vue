@@ -10,66 +10,64 @@
               exec: [
                 {
                   width: 350,
-                  height: 300
+                  height: 300,
                 },
                 {
                   width: 600,
-                  height: 300
+                  height: 300,
                 },
                 {
                   width: 900,
-                  height: 300
+                  height: 300,
                 },
                 {
                   width: 1200,
-                  height: 300
+                  height: 300,
                 },
                 {
                   width: 1500,
-                  height: 300
+                  height: 300,
                 },
                 {
                   width: 1920,
-                  height: 300
-                }
-              ]
-            }
+                  height: 300,
+                },
+              ],
+            },
           }"
         />
       </template>
-      <pre><code>{{entry}}</code></pre>
+      <pre><code>{{ entry }}</code></pre>
     </template>
   </div>
 </template>
 
 <script lang="ts">
-import { BCMSEntryParsed } from '@becomes/cms-client/types'
-import BCMSImage from 'nuxt-plugin-bcms/components/image.vue'
-import Vue from 'vue'
+import { BCMSEntryParsed } from '@becomes/cms-client/types';
+import { BCMSImage } from 'nuxt-plugin-bcms/components';
+import Vue from 'vue';
 
 export default Vue.extend({
   components: {
-    BCMSImage
+    BCMSImage,
   },
-  data() {
+
+  async asyncData (ctx) {
+    const templateName = ctx.route.params.template;
+    const entrySlug = ctx.route.params.entry;
+    return {
+      entry: await ctx.$bcms.request({
+        url: `/template/${templateName}/entry/${entrySlug}/data.json`,
+      }),
+    };
+  },
+  data () {
     const data: {
-      entry: BCMSEntryParsed | null
+      entry: BCMSEntryParsed | null;
     } = {
-      entry: null
-    }
-    return data
+      entry: null,
+    };
+    return data;
   },
-
-  async asyncData(ctx) {
-    const templateName = ctx.route.params.template
-    const entrySlug = ctx.route.params.entry
-    const entry = await ctx.$bcms.entry.get({
-      template: templateName,
-      entry: entrySlug
-    })
-    return { entry }
-  }
-})
+});
 </script>
-
-
