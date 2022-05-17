@@ -1,5 +1,8 @@
+import { BCMSImageConfig } from 'nuxt-plugin-bcms/components';
 import { createBcmsNuxtConfig } from 'nuxt-plugin-bcms/module';
 import bcmsRoutes from './bcms.routes';
+
+BCMSImageConfig.localImageProcessing = true;
 
 export default {
   target: 'static',
