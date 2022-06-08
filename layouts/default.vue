@@ -5,12 +5,16 @@
 </template>
 
 <script lang="ts">
-import { BCMSImageConfig } from 'nuxt-plugin-bcms/components/_config.js'
-import Vue from 'vue'
+import { BCMSImageConfig } from 'nuxt-plugin-bcms/components/_config.js';
+import Vue from 'vue';
 
-BCMSImageConfig.localImageProcessing = true
+BCMSImageConfig.cmsOrigin =
+  process.env.NUXT_ENV_BCMS_API_ORIGIN ||
+  'https://becomes-starter-projects.yourbcms.com';
+BCMSImageConfig.publicApiKeyId =
+  process.env.NUXT_ENV_BCMS_API_PUBLIC_KEY || '629dcd4dbcf5017354af6fe8';
 
-export default Vue.extend({})
+export default Vue.extend({});
 </script>
 
 <style>
