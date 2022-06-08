@@ -6,9 +6,8 @@ import {
 export default createBcmsMostServerRoutes({
   '/home.json': createBcmsMostServerRoute({
     method: 'get',
-    async handler ({ bcms }) {
+    async handler({ bcms }) {
       await bcms.template.pull();
-      // eslint-disable-next-line require-await
       const result = await bcms.template.find(async () => true);
       return result.map((temp) => {
         return {
@@ -20,7 +19,7 @@ export default createBcmsMostServerRoutes({
   }),
   '/template/:slug/data.json': createBcmsMostServerRoute({
     method: 'get',
-    async handler ({ bcms, params }) {
+    async handler({ bcms, params }) {
       const res = await bcms.content.entry.find(params.slug, async () => true);
       return res.map((entry) => {
         return {
@@ -32,7 +31,7 @@ export default createBcmsMostServerRoutes({
   }),
   '/template/:template/entry/:entry/data.json': createBcmsMostServerRoute({
     method: 'get',
-    async handler ({ bcms, params }) {
+    async handler({ bcms, params }) {
       return await bcms.content.entry.findOne(
         params.template,
         async e => e.meta.en.slug === params.entry,
