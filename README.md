@@ -1,21 +1,3 @@
-# cms-starter-nuxt-blog
+# BCMS Nuxt starter
 
-## Steps to get it running
-
-Install all the packages
-
-```
-npm install
-```
-
-Run the dev server
-
-```
-npm run dev
-```
-
-Use the globally saved package
-
-```
-npm link nuxt-plugin-bcms
-```
+Basic starter project for NuxtJS and BCMS. For more information visit [the plugin repository](https://github.com/becomesco/nuxt-plugin-bcms).
