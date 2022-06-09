@@ -17,15 +17,30 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  async asyncData (ctx) {
+  async asyncData(ctx) {
     const templateName = ctx.route.params.template;
+    const entries = await ctx.$bcms.entry.getAll({
+      template: templateName,
+    });
     return {
-      entries: await ctx.$bcms.request({
-        url: `/template/${templateName}/data.json`,
+      entries: entries.map((entry) => {
+        return {
+          slug: `/${templateName}/${entry.meta.en.slug}`,
+          title: entry.meta.en.title,
+        };
       }),
     };
+    /**
+     * Optionally you can use `bcms.routes.ts` to mask access
+     * to the BCMS and provide faster page loading.
+     */
+    // return {
+    //   entries: await ctx.$bcms.request({
+    //     url: `/template/${templateName}/data.json`,
+    //   }),
+    // };
   },
-  data () {
+  data() {
     const data: {
       entries: Array<{
         slug: string;

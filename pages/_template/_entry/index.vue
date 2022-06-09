@@ -52,16 +52,25 @@ export default Vue.extend({
     BCMSImage,
   },
 
-  async asyncData (ctx) {
+  async asyncData(ctx) {
     const templateName = ctx.route.params.template;
     const entrySlug = ctx.route.params.entry;
-    return {
-      entry: await ctx.$bcms.request({
-        url: `/template/${templateName}/entry/${entrySlug}/data.json`,
-      }),
-    };
+    const entry = await ctx.$bcms.entry.get({
+      template: templateName,
+      entry: entrySlug,
+    });
+    return { entry };
+    /**
+     * Optionally you can use `bcms.routes.ts` to mask access
+     * to the BCMS and provide faster page loading.
+     */
+    // return {
+    //   entry: await ctx.$bcms.request({
+    //     url: `/template/${templateName}/entry/${entrySlug}/data.json`,
+    //   }),
+    // };
   },
-  data () {
+  data() {
     const data: {
       entry: BCMSEntryParsed | null;
     } = {
