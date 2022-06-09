@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": false,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "types": [
+      "@nuxt/types",
+      "@types/node",
+      "nuxt-plugin-bcms",
+      "nuxt-plugin-bcms/components",
+      "@nuxtjs/axios"
+    ]
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}
