@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { BCMSImageConfig } from 'nuxt-plugin-bcms/components/_config.js';
+import { BCMSImageConfig } from '@becomes/cms-most/frontend';
 import Vue from 'vue';
 
 BCMSImageConfig.cmsOrigin =
