@@ -18,7 +18,7 @@
     "nuxt": "^2.15.2"
   },
   "devDependencies": {
-    "@becomes/cms-cli": "^2.3.3",
+    "@becomes/cms-cli": "^2.3.4",
     "@becomes/cms-client": "^3.3.2",
     "@becomes/cms-most": "^2.6.1",
     "@nuxt/types": "^2.14.12",
