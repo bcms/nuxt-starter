@@ -51,7 +51,6 @@ export default Vue.extend({
   components: {
     BCMSImage,
   },
-
   async asyncData(ctx) {
     const templateName = ctx.route.params.template;
     const entrySlug = ctx.route.params.entry;
