@@ -17,18 +17,6 @@ export default createBcmsMostServerRoutes({
       });
     },
   }),
-  '/template/:slug/data.json': createBcmsMostServerRoute({
-    method: 'get',
-    async handler({ bcms, params }) {
-      const res = await bcms.content.entry.find(params.slug, async () => true);
-      return res.map((entry) => {
-        return {
-          title: entry.meta.en.title,
-          slug: `/${params.slug}/${entry.meta.en.slug}`,
-        };
-      });
-    },
-  }),
   '/template/:template/entry/:entry/data.json': createBcmsMostServerRoute({
     method: 'get',
     async handler({ bcms, params }) {
