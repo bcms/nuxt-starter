@@ -2,12 +2,17 @@ import { NuxtLink } from '#components';
 
 export default defineNuxtComponent({
   setup() {
-    console.log('HERE')
     const { $bcms } = useNuxtApp();
     const route = useRoute();
     const { data } = useAsyncData(async (ctx) => {
-      return await $bcms.entry.getAll({
+      const result = await $bcms.entry.getAll({
         template: (route.params.template as string) || '',
+      });
+      return result.map((e) => {
+        return {
+          title: e.meta.en.title,
+          uri: `/${route.params.template}/${e.meta.en.slug}`,
+        };
       });
     });
 
@@ -18,11 +23,7 @@ export default defineNuxtComponent({
           {data.value?.map((item) => {
             return (
               <li>
-                <NuxtLink
-                  href={`/${route.params.template}/${item.meta.en.slug}`}
-                >
-                  {item.meta.en.title}
-                </NuxtLink>
+                <NuxtLink href={item.uri}>{item.title}</NuxtLink>
               </li>
             );
           })}

@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "nuxt": "3.0.0",
-    "nuxt-plugin-bcms": "^3.0.0",
+    "nuxt-plugin-bcms": "^3.0.1",
     "sass": "^1.56.2",
     "typescript": "^4.9.4",
     "vite": "^4.0.0"
