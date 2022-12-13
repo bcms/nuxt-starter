@@ -1,12 +1,14 @@
-import '../styles/_main.scss'
+import '../styles/_main.scss';
 import { BCMSImageConfig } from '@becomes/cms-most/frontend';
 
-BCMSImageConfig.cmsOrigin = 'https://cms.vajaga.com';
-BCMSImageConfig.publicApiKeyId = '63753b269fab4733bcf04b9b';
+BCMSImageConfig.cmsOrigin = process.env.VITE_BCMS_CMS_ORIGIN || '';
+BCMSImageConfig.publicApiKeyId = process.env.VITE_BCMS_API_KEY_ID || '';
 BCMSImageConfig.localeImageProcessing = false;
 
 export default defineNuxtComponent({
   setup(_, ctx) {
-    return () => <div class="layout">{ctx.slots.default ? ctx.slots.default() : ''}</div>;
+    return () => (
+      <div class="layout">{ctx.slots.default ? ctx.slots.default() : ''}</div>
+    );
   },
 });
