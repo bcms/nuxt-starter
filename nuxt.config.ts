@@ -13,10 +13,10 @@ export default defineNuxtConfig({
       'nuxt-plugin-bcms',
       createBcmsNuxtConfig({
         cms: {
-          origin: process.env.VITE_BCMS_CMS_ORIGIN || '',
+          origin: process.env.BCMS_API_ORIGIN || '',
           key: {
-            id: process.env.VITE_BCMS_API_KEY_ID || '',
-            secret: process.env.VITE_BCMS_API_KEY_SECRET || '',
+            id: process.env.BCMS_API_KEY || '',
+            secret: process.env.BCMS_API_SECRET || '',
           },
         },
         websiteDomain: 'http://localhost:3000',

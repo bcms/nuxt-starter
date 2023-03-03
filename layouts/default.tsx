@@ -1,8 +1,8 @@
 import '../styles/_main.scss';
 import { BCMSImageConfig } from '@becomes/cms-most/frontend';
 
-BCMSImageConfig.cmsOrigin = process.env.VITE_BCMS_CMS_ORIGIN || '';
-BCMSImageConfig.publicApiKeyId = process.env.VITE_BCMS_API_KEY_ID || '';
+BCMSImageConfig.cmsOrigin = process.env.VITE_BCMS_API_ORIGIN || '';
+BCMSImageConfig.publicApiKeyId = process.env.VITE_BCMS_API_KEY || '';
 BCMSImageConfig.localeImageProcessing = false;
 
 export default defineNuxtComponent({
