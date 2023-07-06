@@ -5,9 +5,9 @@ import bcmsRoutes from './bcms.routes';
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      pubBcmsApiOrigin: '',
-      pubBcmsApiKeyId: '',
-      pubBcmsApiKeySecret: '',
+      bcmsApiOrigin: '',
+      bcmsApiKeyId: '',
+      bcmsApiKeySecret: '',
       bcmsEnableClientCache: '',
       bcmsClientDebug: '',
       bcmsEntryStatuses: '',
