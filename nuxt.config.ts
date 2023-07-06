@@ -3,6 +3,18 @@ import bcmsRoutes from './bcms.routes';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      pubBcmsApiOrigin: '',
+      pubBcmsApiKeyId: '',
+      pubBcmsApiKeySecret: '',
+      bcmsEnableClientCache: '',
+      bcmsClientDebug: '',
+      bcmsEntryStatuses: '',
+      bcmsMostServerPort: '',
+      bcmsMostServerDomain: '',
+    },
+  },
   vite: {
     optimizeDeps: {
       include: ['axios', '@becomes/cms-client'],
@@ -25,8 +37,6 @@ export default defineNuxtConfig({
         },
         server: {
           routes: bcmsRoutes,
-          // domain: process.env.VITE_BCMS_MOST_SERVER_DOMAIN || 'localhost',
-          // port: parseInt(process.env.VITE_BCMS_MOST_SERVER_PORT || '3001', 10)
         },
       }),
     ],
