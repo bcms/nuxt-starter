@@ -22,7 +22,7 @@ export default createBcmsMostServerRoutes({
     async handler({ bcms, params }) {
       return await bcms.content.entry.findOne(
         params.template,
-        async e => e.meta.en.slug === params.entry,
+        async (e) => e.meta.en.slug === params.entry,
       );
     },
   }),

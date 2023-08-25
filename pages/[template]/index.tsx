@@ -4,7 +4,7 @@ export default defineNuxtComponent({
   setup() {
     const { $bcms } = useNuxtApp();
     const route = useRoute();
-    const { data } = useAsyncData(async (ctx) => {
+    const { data } = useAsyncData(async () => {
       const result = await $bcms.entry.getAll({
         template: (route.params.template as string) || '',
       });
